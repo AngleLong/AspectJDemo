@@ -20,7 +20,7 @@ public class TraceAspect {
 
     private static final String TAG = "hjl";
 
-    @Before("execution(* android.app.Activity.on**(..))")
+    @Before("execution(* android.app.Activity.on*(..))")
     public void onActivityMethodBefore(JoinPoint joinPoint) throws Throwable {
         String key = joinPoint.getSignature().toString();
         Log.e(TAG, "onActivityMethodBefore: 切面的点执行了！" + key);
@@ -32,6 +32,7 @@ public class TraceAspect {
         String key = proceedingJoinPoint.getSignature().toString();
 
         //这句代码的含义就是执行了这些方法
+        //@Around 会替换原先执行的代码，但如果你仍然希望执行原先的代码，可以使用joinPoint.proceed()。
         proceedingJoinPoint.proceed();
 
         long endTime = System.currentTimeMillis();

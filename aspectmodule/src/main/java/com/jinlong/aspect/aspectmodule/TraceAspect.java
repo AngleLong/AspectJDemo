@@ -21,7 +21,7 @@ public class TraceAspect {
     private static final String TAG = "hjl";
 
     @Before("execution(* android.app.Activity.on*(..))")
-    public void onActivityMethodBefore(JoinPoint joinPoint) throws Throwable {
+    public void onActivityMethodBefore(JoinPoint joinPoint) {
         String key = joinPoint.getSignature().toString();
         Log.e(TAG, "onActivityMethodBefore: 切面的点执行了！" + key);
     }
@@ -40,7 +40,7 @@ public class TraceAspect {
     }
 
     @After("call(* com.jinlong.aspectjdemo.MainActivity.onToast(..))")
-    public void onCallBefore(JoinPoint joinPoint) throws Throwable {
+    public void onCallBefore(JoinPoint joinPoint) {
         Log.e(TAG, "方法结束时 ");
     }
 }

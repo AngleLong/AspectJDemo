@@ -23,7 +23,7 @@ public class AnnotationAspect {
     }
 
     @Before("DebugTraceMethod()")
-    public void beforeDebugTraceMethod(JoinPoint joinPoint) throws Throwable {
+    public void beforeDebugTraceMethod(JoinPoint joinPoint) {
         String key = joinPoint.getSignature().toString();
         Log.e(TAG, "注解这个方法执行了: ");
     }
